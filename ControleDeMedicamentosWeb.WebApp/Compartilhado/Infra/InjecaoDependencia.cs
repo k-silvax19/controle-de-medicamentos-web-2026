@@ -15,6 +15,7 @@ namespace ControleDeMedicamentosWeb.WebApp.Compartilhado.Infra;
 
 public static class InjecaoDependencia
 {
+
     public static void AddInfraRepositories(this IServiceCollection services)
     {
         services.AddScoped(provider =>
@@ -26,12 +27,13 @@ public static class InjecaoDependencia
             return contextoJson;
         });
 
-        services.AddScoped<ISqlConnctionFactory, SqlConnectionFactory>();
+        services.AddScoped<ISqlConnectionFactory, SqlConnectionFactory>();
 
-        services.AddScoped<IRepositorioRequisicao, RepositorioRequisicaoEmArquivo>();
-        services.AddScoped<IRepositorioFornecedor, RepositorioFornecedorEmArquivo>();
-        services.AddScoped<IRepositorioFuncionario, RepositorioFuncionarioEmArquivo>();
-        services.AddScoped<IRepositorioMedicamento, RepositorioMedicamentoEmArquivo>();
-        services.AddScoped<IRepositorioPaciente, RepositorioPacienteEmArquivo>();
+        services.AddScoped<IRepositorioRequisicao, RepositorioRequisicaoEmSql>();
+        services.AddScoped<IRepositorioFornecedor, RepositorioFornecedorEmSql>();
+        services.AddScoped<IRepositorioFuncionario, RepositorioFuncionarioEmSql>();
+        services.AddScoped<IRepositorioMedicamento, RepositorioMedicamentoEmSql>();
+        services.AddScoped<IRepositorioPaciente, RepositorioPacienteEmSql>();
     }
 }
+    
